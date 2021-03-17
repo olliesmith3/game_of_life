@@ -4,6 +4,6 @@ import { Cell } from '../../components/Cell';
 
 test('renders a cell', () => {
   render(<Cell />);
-  const cell = screen.getByRole('button');
+  const cell = screen.getByRole('button', { name: /cell/i});
   expect(cell).toBeInTheDocument();
 });

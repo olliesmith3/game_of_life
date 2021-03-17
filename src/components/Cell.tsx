@@ -1,12 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 
 interface Props {
-
 }
 
 export const Cell: React.FC<Props> = () => {
 
+  const [alive, setAlive] = useState<boolean>(false);
+
   return (
-    <button></button>
+    <button aria-label='cell' className={"alive-"+alive.toString()}></button>
   )
 }
