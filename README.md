@@ -44,3 +44,15 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
+
+
+#### helpful tips
+
+test('test name', () => {
+  const { debug } = render(<MyComponent />);
+  debug();
+});
+
+The above prints the DOM so you can see whats happening
+
+I wanted to test for colour change of a cell that I had clicked (using jests matcher toHaveStyle) however the default browser settings of Chrome were showing background-colour: buttonface instead of the colour that I had changed it to. Instead I just tested for a change in class (which is what triggers the colour change)
