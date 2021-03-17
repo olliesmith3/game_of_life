@@ -11,14 +11,16 @@ export const Board: React.FC = () => {
   const [board, setBoard] = useState<boolean[][]>(initialBoard);
 
   const changeBoard = (row: number, cell:number) => {
-    board[row][cell] = !board[row][cell]
+    const newBoard = [...board]
+    newBoard[row][cell] = !board[row][cell]
+    setBoard(newBoard)
   }
 
   const cells = board.map((rowArray: boolean[], rowIndex: number) =>
     <ul key={"row" + rowIndex.toString()} className={"row"}>
       {rowArray.map((alive: boolean, cellIndex: number) =>
         <li key={rowIndex.toString() + cellIndex.toString()} className={"cell"}>
-          <Cell />
+          <Cell changeBoard={changeBoard} coordinates={{row: rowIndex, cell: cellIndex}}/>
         </li>
       )}
     </ul>
