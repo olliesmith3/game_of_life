@@ -1,22 +1,20 @@
 import React, { useState } from "react";
 
 interface Props {
-  changeBoard: (row: number, cell: number) => void;
-  coordinates: {row: number, cell: number}
+  changeBoard?: (row: number, cell: number) => void;
+  coordinates: {row: number, cell: number};
+  isAlive: boolean;
 }
 
-export const Cell: React.FC<Props> = ({changeBoard, coordinates}) => {
-
-  const [alive, setAlive] = useState<boolean>(false);
+export const Cell: React.FC<Props> = ({changeBoard, coordinates, isAlive}) => {
 
   return (
     <button 
       onClick={() => {
-        setAlive(!alive); 
         changeBoard(coordinates.row, coordinates.cell);
       }} 
       aria-label='cell' 
-      className={"alive-"+alive.toString()}>
+      className={"alive-"+isAlive.toString()}>
     </button>
   )
 }

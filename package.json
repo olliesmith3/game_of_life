@@ -40,6 +40,7 @@
     ]
   },
   "devDependencies": {
-    "@testing-library/jest-dom": "^5.11.9"
+    "@testing-library/jest-dom": "^5.11.9",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.5.0"
   }
 }

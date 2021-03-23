@@ -9,6 +9,7 @@ test('When a board with a single alive cell is simulated it dies', () => {
   expect(cells[0]).toHaveAttribute('class', 'alive-true');
 
   const playButton = screen.getByRole('button', {name: 'Next Step'})
+  fireEvent.click(playButton);
 
   expect(cells[0]).toHaveAttribute('class', 'alive-false');
 });

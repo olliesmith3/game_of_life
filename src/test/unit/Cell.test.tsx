@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import { Cell } from '../../components/Cell';
 
 test('renders a cell', () => {
-  render(<Cell />);
+  render(<Cell  coordinates={{row: 0, cell: 0}} isAlive={true} />);
   const cell = screen.getByRole('button', { name: /cell/i});
   expect(cell).toBeInTheDocument();
 });
