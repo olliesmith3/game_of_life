@@ -1,12 +1,24 @@
 import React, { useState } from "react";
 import {Cell} from './Cell'
 
-export const Board: React.FC = () => {
+interface Props {
+  initialValues?: boolean[][];
+}
 
-  const initialBoard = [[false,false,false,false],
-  [false,false,false,false],
-  [false,false,false,false],
-  [false,false,false,false]]
+export const Board: React.FC<Props> = ({initialValues}) => {
+
+  const getInitialValues = () => {
+    if (initialValues) {
+      return initialValues
+    } else {
+      return [[false,false,false,false],
+      [false,false,false,false],
+      [false,false,false,false],
+      [false,false,false,false]]
+    }
+  }
+
+  const initialBoard = getInitialValues();
 
   const [board, setBoard] = useState<boolean[][]>(initialBoard);
 
