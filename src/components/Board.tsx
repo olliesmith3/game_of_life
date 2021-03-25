@@ -21,9 +21,13 @@ export const Board: React.FC<Props> = ({initialValues}) => {
   const initialBoard = getInitialValues();
 
   const [board, setBoard] = useState<boolean[][]>(initialBoard);
+  const [neighbours, setNeighbours] = useState<number[][]>([[0,0,0,0],
+    [0,0,0,0],
+    [0,0,0,0],
+    [0,0,0,0]]);
 
   const changeBoard = (row: number, cell:number) => {
-    const newBoard = [...board];
+    let newBoard = [...board];
     newBoard[row][cell] = !board[row][cell];
     setBoard(newBoard)
   }
@@ -45,15 +49,14 @@ export const Board: React.FC<Props> = ({initialValues}) => {
   }
 
   const updateCell = (row: number, cell: number) => {
-    let neighbours = calculateNeighbours(row, cell)
     if (board[row][cell] === false) {
-      if (neighbours === 3) {
+      if (neighbours[row][cell] === 3) {
         return true
       } else {
         return false
       }
     } else {
-      if (neighbours === 2 || neighbours === 3) {
+      if (neighbours[row][cell] === 2 || neighbours[row][cell] === 3) {
         return true
       } else {
         return false
@@ -61,9 +64,16 @@ export const Board: React.FC<Props> = ({initialValues}) => {
     }
   }
 
-  const nextStep = () => {
-    const nextBoard = [...board]
+  const nextStep = (board: boolean[][]) => {
+    let nextNeighbours = [...neighbours]
+    for (let row=0; row < board.length; row++) {
+      for (let cell = 0; cell < board.length; cell++) {
+        nextNeighbours[row][cell] = calculateNeighbours(row, cell)
+      }
+    }
+    setNeighbours(nextNeighbours);
 
+    let nextBoard = [...board]
     for (let row=0; row < board.length; row++) {
       for (let cell = 0; cell < board.length; cell++) {
         nextBoard[row][cell] = updateCell(row, cell)
@@ -85,7 +95,7 @@ export const Board: React.FC<Props> = ({initialValues}) => {
   return (
     <div data-testid='board'>
       <ul>{cells}</ul>
-      <button onClick={() => nextStep()}>Next Step</button>
+      <button onClick={() => nextStep(board)}>Next Step</button>
     </div>
   )
 }
