@@ -34,7 +34,17 @@ ul {
   display: inline;
 }
 
+button:focus {
+  outline: none;
+}
+
 #board {
+  margin: auto;
   width: 800px;
   height: 81%;
+  margin-top: 10px;
+}
+
+#next-button {
+  margin-top: 10px;
 }

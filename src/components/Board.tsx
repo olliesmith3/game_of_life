@@ -94,7 +94,10 @@ export const Board: React.FC<Props> = ({initialValues, cellSize}) => {
   return (
     <div data-testid='board' >
       <ul id='board'>{cells}</ul>
-      <button onClick={() => nextStep(board)}>Next Step</button>
+      <button 
+        onClick={() => nextStep(board)}
+        id='next-button'
+      >Next Step</button>
     </div>
   )
 }
