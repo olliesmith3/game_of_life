@@ -4,7 +4,7 @@ import { BoardSizeButtons } from "./BoardSizeButtons";
 
 export const GameBody: React.FC = () => {
 
-  const [boardSize, setBoardSize] = useState<string>("small");
+  const [boardSize, setBoardSize] = useState<string>("medium");
 
   useEffect(() => {
     getInitialValues();
@@ -12,11 +12,11 @@ export const GameBody: React.FC = () => {
 
   const getInitialValues = () => {
     if (boardSize === "small") {
-      setInitialValues(generateEmptyBoard(6))
-    } else if (boardSize === "medium") {
-      setInitialValues(generateEmptyBoard(8))
-    } else if (boardSize === "large") {
       setInitialValues(generateEmptyBoard(10))
+    } else if (boardSize === "medium") {
+      setInitialValues(generateEmptyBoard(20))
+    } else if (boardSize === "large") {
+      setInitialValues(generateEmptyBoard(40))
     } else {
       setInitialValues(generateEmptyBoard(4))
     }

@@ -16,9 +16,9 @@ export const BoardSizeButtons: React.FC<Props> = ({setBoardSize, getInitialValue
     <div id="board-size-buttons">
       <h3>How big?</h3>
       <div onChange={handleInputChange}>
-        <label><input type="radio" value="small" name="boardSize" defaultChecked />Small</label>
-        <label><input type="radio" value="medium" name="boardSize" /> Medium</label>
-        <label><input type="radio" value="large" name="boardSize" /> Large</label>
+        <label><input type="radio" value="small" name="boardSize" />Small</label>
+        <label><input type="radio" value="medium" name="boardSize" defaultChecked />Medium</label>
+        <label><input type="radio" value="large" name="boardSize" />Large</label>
       </div>
     </div>
   )
