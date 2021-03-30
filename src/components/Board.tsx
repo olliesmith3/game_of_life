@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {Cell} from './Cell'
 
 interface Props {
@@ -7,26 +7,19 @@ interface Props {
 
 export const Board: React.FC<Props> = ({initialValues}) => {
 
-  const getInitialValues = () => {
-    if (initialValues) {
-      return initialValues
-    } else {
-      return [[false,false,false,false],
-      [false,false,false,false],
-      [false,false,false,false],
-      [false,false,false,false]]
-    }
+  const [board, setBoard] = useState<boolean[][]>(initialValues);
+
+  useEffect(() => {
+    setBoard(initialValues);
+  }, [initialValues]);
+
+  const generateEmptyNeighbours = (rows: number) => {
+    return new Array(rows).fill("").map(() => new Array(rows).fill(0));
   }
 
-  const initialBoard = getInitialValues();
+  const [neighbours, setNeighbours] = useState<number[][]>(generateEmptyNeighbours(6));
 
-  const [board, setBoard] = useState<boolean[][]>(initialBoard);
-  const [neighbours, setNeighbours] = useState<number[][]>([[0,0,0,0],
-    [0,0,0,0],
-    [0,0,0,0],
-    [0,0,0,0]]);
-
-  const changeBoard = (row: number, cell:number) => {
+  const changeBoard = (row: number, cell: number) => {
     let newBoard = [...board];
     newBoard[row][cell] = !board[row][cell];
     setBoard(newBoard)
