@@ -3,14 +3,16 @@ import {Cell} from './Cell'
 
 interface Props {
   initialValues?: boolean[][];
+  cellSize: string;
 }
 
-export const Board: React.FC<Props> = ({initialValues}) => {
+export const Board: React.FC<Props> = ({initialValues, cellSize}) => {
 
   const [board, setBoard] = useState<boolean[][]>(initialValues);
 
   useEffect(() => {
     setBoard(initialValues);
+    setEmptyNeighbours(generateEmptyNeighbours(initialValues.length));
   }, [initialValues]);
 
   const generateEmptyNeighbours = (rows: number) => {
@@ -79,15 +81,19 @@ export const Board: React.FC<Props> = ({initialValues}) => {
     <ul key={"row" + rowIndex.toString()} className={"row"}>
       {rowArray.map((isAlive: boolean, cellIndex: number) =>
         <li key={rowIndex.toString() + cellIndex.toString()} className={"cell"}>
-          <Cell isAlive={isAlive} changeBoard={changeBoard} coordinates={{row: rowIndex, cell: cellIndex}}/>
+          <Cell 
+            isAlive={isAlive} 
+            changeBoard={changeBoard} 
+            coordinates={{row: rowIndex, cell: cellIndex}}
+            cellSize={cellSize}/>
         </li>
       )}
     </ul>
   );
 
   return (
-    <div data-testid='board'>
-      <ul>{cells}</ul>
+    <div data-testid='board' >
+      <ul id='board'>{cells}</ul>
       <button onClick={() => nextStep(board)}>Next Step</button>
     </div>
   )

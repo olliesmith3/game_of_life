@@ -35,10 +35,10 @@ test('When the small size is selected and a single alive cell is simulated it di
   const cells = screen.getAllByRole('button', {name: 'cell'})
   fireEvent.click(cells[0])
 
-  expect(cells[0]).toHaveAttribute('class', 'alive-true');
+  expect(cells[0]).toHaveAttribute('class', 'small alive-true');
 
   const playButton = screen.getByRole('button', {name: 'Next Step'})
   fireEvent.click(playButton);
 
-  expect(cells[0]).toHaveAttribute('class', 'alive-false');
+  expect(cells[0]).toHaveAttribute('class', 'small alive-false');
 });

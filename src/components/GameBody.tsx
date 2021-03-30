@@ -31,7 +31,7 @@ export const GameBody: React.FC = () => {
   return (
     <div>
       <BoardSizeButtons setBoardSize={setBoardSize} getInitialValues={getInitialValues}/>
-      <Board initialValues={initialValues}/>
+      <Board initialValues={initialValues} cellSize={boardSize}/>
       <button onClick={() => {
         console.log(initialValues)
       }}></button>
