@@ -2,7 +2,11 @@ import { render, fireEvent, screen } from '@testing-library/react';
 import { Board } from '../../components/Board';
 
 test('When a board with a single alive cell is simulated it dies', () => {
-  render(<Board />);
+  render(<Board initialValues={[
+    [false,false,false,false],
+    [false,true,true,false],
+    [false,true,true,false],
+    [false,false,false,false]]} />);
   const cells = screen.getAllByRole('button', {name: 'cell'})
   fireEvent.click(cells[0])
 

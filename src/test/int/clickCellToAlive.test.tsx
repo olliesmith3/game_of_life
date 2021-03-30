@@ -3,7 +3,10 @@ import { render, fireEvent, screen } from '@testing-library/react';
 import { Board } from '../../components/Board';
 
 test('When a cell is clicked it changes colour', () => {
-  render(<Board />);
+  render(<Board initialValues={[
+    [false,false,false],
+    [false,true,true],
+    [false,false,false]]}/>);
   const cells = screen.getAllByRole('button', {name: 'cell'})
   fireEvent.click(cells[0])
 
