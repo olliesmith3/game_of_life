@@ -1,58 +1,26 @@
-# Getting Started with Create React App
+# Game of Life
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Motivation
+I loved the idea of this primitive simulation of cells and the cool patterns, oscillators and even spaceships that could be built with it. It was also a good project for learning React with Typescript.
 
-## Available Scripts
+## How to use
 
-In the project directory, you can run:
+The game is deployed at: https://game-of-life-2.herokuapp.com
 
-### `yarn start`
+The game works on three simple rules:
+  An alive cell with 2 or 3 alive neighbours remains alive
+  An alive cell with any other number of alive neighbours dies
+  A dead cell can come back to life if it has exactly 3 alive neighbours
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Each time you click the next button, these rules will be applied to each cell.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## How to run the tests
 
-### `yarn test`
+clone this repository and change into the game-of-life directory. You can then install the dependencies and run the tests.
+```
+$ git clone https://github.com/olliesmith3/game_of_life.git
+$ cd game-of-life
+$ npm install
+$ npm start
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-
-#### helpful tips
-
-test('test name', () => {
-  const { debug } = render(<MyComponent />);
-  debug();
-});
-
-The above prints the DOM so you can see whats happening
-
-I wanted to test for colour change of a cell that I had clicked (using jests matcher toHaveStyle) however the default browser settings of Chrome were showing background-colour: buttonface instead of the colour that I had changed it to. Instead I just tested for a change in class (which is what triggers the colour change)
