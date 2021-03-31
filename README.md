@@ -14,6 +14,8 @@ The game works on three simple rules:
 
 Each time you click the next button, these rules will be applied to each cell.
 
+![Oscillator Example](./public/oscillator-1.png?raw=true "Home Page")
+
 ## How to run the tests
 
 clone this repository and change into the game-of-life directory. You can then install the dependencies and run the tests.
