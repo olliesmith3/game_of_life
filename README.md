@@ -14,7 +14,9 @@ The game works on three simple rules:
 
 Each time you click the next button, these rules will be applied to each cell.
 
-![Oscillator Example](./public/oscillator-1.png?raw=true "Home Page")
+![Oscillator Example](./public/oscillator-1.png?raw=true "Oscillator")![Gun Example](./public/gun-1.png?raw=true "Gun")
+
+The above examples show first an oscillator with a period of 15 and then a hyperactive group of 5 cells that with enough time and space (use large board) will produce gliders.
 
 ## How to run the tests
 
